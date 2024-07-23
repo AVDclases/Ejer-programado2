@@ -1,0 +1,52 @@
+---
+title: Visualización de datos
+author: Daniela Monge
+format:
+    html:
+    code-fold:true
+    theme: cosmo
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+```
+
+```{python}
+#cargo datos
+
+tarea_II = pd.read_excel(r"C:\Users\danim\OneDrive\Desktop\AVD\IIIC\Nayib\S-10\Superstore.xlsx")
+```
+
+```{python}
+tarea_II.dtypes
+```
+
+
+```{python}
+#Categorico
+sns.set_theme(style="whitegrid")
+
+ff, ax = plt.subplots(figsize=(6.5, 6.5))
+sns.despine(f, left=True, bottom=True)
+sns.scatterplot(x="Sales", y="Profit",
+                palette="ch:r=-.2,d=.3_r",
+                sizes=(1, 8), linewidth=0,
+                data=tarea_II, ax=ax)
+```
+
+
+```{python}
+#Relacional
+sns.set_style(style="ticks",rc={'axes.titlesize':10,'axes.label':10})
+
+sns.lmplot(
+    data=tarea_II, x="Sales", y="Quantity", scatter_kws={"s":20,'alpha':1})
+```
+
+
+``` {python}
+#Distribución
+sns.displot(data=tarea_II,x='Quantity')
+plt.title('Grafico de distibucion Quantity')
+```
